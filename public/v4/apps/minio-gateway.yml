@@ -9,10 +9,10 @@ services:
             MINIO_ACCESS_KEY: $$cap_access_key
             MINIO_SECRET_KEY: $$cap_secret_key
         caproverExtra:
-            containerHttpPort: '443'
+            containerHttpPort: '9000'
             dockerfileLines:
                 - FROM minio/minio:$$cap_minio_version
-                - CMD ["minio", "gateway", "s3", "$$cap_service_endpoint"]
+                - CMD ["minio", "gateway", "s3", $$cap_service_endpoint]
 caproverOneClickApp:
     variables:
         - id: $$cap_minio_version
