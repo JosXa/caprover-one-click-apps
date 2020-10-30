@@ -35,7 +35,7 @@ caproverOneClickApp:
           validRegex: /.{8,}/
     instructions:
         start: >-
-            This is the minio app in a gateway mode version for S3.\nDon't forget to turn on HTTPS.
+            This is the prebuilt minio app in a gateway mode version for S3.\nDon't forget to turn on HTTPS.
         end: Minio is deployed and available as $$cap_appname
     displayName: ''
     isOfficial: true
