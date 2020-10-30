@@ -1,44 +1,44 @@
 captainVersion: 4
 services:
-  $$cap_appname:
-    volumes:
-      - minio-gateway-data:/data
-      - minio-gateway-config-data:/root/.minio
-    restart: always
-    environment:
-      MINIO_ACCESS_KEY: $$cap_access_key
-      MINIO_SECRET_KEY: $$cap_secret_key
-    caproverExtra:
-      containerHttpPort: "9000"
-      dockerfileLines:
-        - FROM minio/minio:$$cap_minio_version
-        - CMD ["minio", "gateway", "s3", "$$cap_service_endpoint"]
+    $$cap_appname:
+        volumes:
+            - minio-gateway-data:/data
+            - minio-gateway-config-data:/root/.minio
+        restart: always
+        environment:
+            MINIO_ACCESS_KEY: $$cap_access_key
+            MINIO_SECRET_KEY: $$cap_secret_key
+        caproverExtra:
+            containerHttpPort: '9000'
+            dockerfileLines:
+                - FROM minio/minio:$$cap_minio_version
+                - CMD ["minio", "gateway", "s3", "$$cap_service_endpoint"]
 caproverOneClickApp:
-  variables:
-    - id: $$cap_minio_version
-      label: Minio Version
-      defaultValue: latest
-      description: Check out their Docker page for the valid tags https://hub.docker.com/r/minio/minio/tags/
-      validRegex: /^([^\s^\/])+$/
-    - id: $$cap_servce_endpoint
-      label: Gateway Endpoint URL
-      description: S3-compatible service endpoint URL for the gateway including port
-      validRegex: /(https://.*):(\d*)\/?(.*)/
-    - id: $$cap_access_key
-      label: Minio Access Key
-      defaultValue: ""
-      description: Username to access minio server
-      validRegex: /.{5,}/
-    - id: $$cap_secret_key
-      label: Minio Secret Key
-      defaultValue: ""
-      description: Password to access minio server
-      validRegex: /.{8,}/
-  instructions:
-    start: >-
-      This is the minio app in a gateway mode version for S3.\nDon't forget to turn on HTTPS.
-    end: Minio is deployed and available as $$cap_appname
-  displayName: ""
-  isOfficial: true
-  description: MinIO is a cloud storage server compatible with Amazon S3
-  documentation: Taken from https://hub.docker.com/r/minio/minio
+    variables:
+        - id: $$cap_minio_version
+          label: Minio Version
+          defaultValue: latest
+          description: Check out their Docker page for the valid tags https://hub.docker.com/r/minio/minio/tags/
+          validRegex: /^([^\s^\/])+$/
+        - id: $$cap_servce_endpoint
+          label: Gateway Endpoint URL
+          description: S3-compatible service endpoint URL for the gateway including port
+          validRegex: /(https://.*):(\d*)\/?(.*)/
+        - id: $$cap_access_key
+          label: Minio Access Key
+          defaultValue: ''
+          description: Username to access minio server
+          validRegex: /.{5,}/
+        - id: $$cap_secret_key
+          label: Minio Secret Key
+          defaultValue: ''
+          description: Password to access minio server
+          validRegex: /.{8,}/
+    instructions:
+        start: >-
+            This is the minio app in a gateway mode version for S3.\nDon't forget to turn on HTTPS.
+        end: Minio is deployed and available as $$cap_appname
+    displayName: ''
+    isOfficial: true
+    description: MinIO is a cloud storage server compatible with Amazon S3
+    documentation: Taken from https://hub.docker.com/r/minio/minio
