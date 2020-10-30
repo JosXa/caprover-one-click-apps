@@ -11,7 +11,7 @@ services:
             containerHttpPort: '9000'
             dockerfileLines:
                 - FROM minio/minio:$$cap_minio_version
-                - ENTRYPOINT minio gateway s3 "$$cap_service_endpoint"
+                - CMD ["minio", "gateway", "s3", "$$cap_service_endpoint"]
 caproverOneClickApp:
     variables:
         - id: $$cap_minio_version
