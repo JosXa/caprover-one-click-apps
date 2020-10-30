@@ -20,7 +20,7 @@ caproverOneClickApp:
           defaultValue: latest
           description: Check out their Docker page for the valid tags https://hub.docker.com/r/minio/minio/tags/
           validRegex: /^([^\s^\/])+$/
-        - id: $$cap_servce_endpoint
+        - id: $$cap_service_endpoint
           label: Gateway Endpoint URL
           description: S3-compatible service endpoint URL for the gateway including port
           validRegex: /(https://.*):(\d*)\/?(.*)/
