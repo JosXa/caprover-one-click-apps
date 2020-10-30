@@ -23,6 +23,7 @@ caproverOneClickApp:
         - id: $$cap_servce_endpoint
           label: Gateway Endpoint URL
           description: S3-compatible service endpoint URL for the gateway including port
+          validRegex: /(https://.*):(\d*)\/?(.*)/
         - id: $$cap_access_key
           label: Minio Access Key
           defaultValue: ''
