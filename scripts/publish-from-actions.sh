@@ -49,7 +49,7 @@ REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)"
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)" 
 GHIO="${OWNER}.github.io"
 REMOTE_BRANCH="master"
-fi 
+
 sleep 1s
 echo "#############################################" 
 echo "######### CLONING REMOTE_BRANCH: $REMOTE_BRANCH" 
