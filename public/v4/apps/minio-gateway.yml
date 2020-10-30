@@ -2,8 +2,8 @@ captainVersion: 4
 services:
     $$cap_appname:
         volumes:
-            - /mnt/data/minio/db-data:/data
-            - /mnt/data/minio/config-data:/root/.minio
+            - minio-gateway-data:/data
+            - minio-gateway-config-data:/root/.minio
         restart: always
         environment:
             MINIO_ACCESS_KEY: $$cap_access_key
@@ -12,7 +12,7 @@ services:
             containerHttpPort: '9000'
             dockerfileLines:
                 - FROM minio/minio:$$cap_minio_version
-                - CMD ["minio", "gateway", "s3", $$cap_service_endpoint]
+                - CMD ["minio", "gateway", "s3", "$$cap_service_endpoint"]
 caproverOneClickApp:
     variables:
         - id: $$cap_minio_version
